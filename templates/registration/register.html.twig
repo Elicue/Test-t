@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<div class="register">
+	<div class="container">
+		<div class="title">
+			<h1>Register</h1>
+			<p>Please enter your register details to sign up.</p>
+		</div>
+
+			{{ form_errors(registrationForm) }}
+
+			{{ form_start(registrationForm) }}
+				<div class="field">
+					{{ form_row(registrationForm.username) }}
+				</div>
+				<div class="field">
+					{{ form_row(registrationForm.email) }}
+				</div>
+					<div class="field">
+						{{ form_row(registrationForm.plainPassword, {
+							label: 'Password'
+						}) }}
+					</div>
+					<div class="field terms">
+						{{ form_row(registrationForm.agreeTerms) }}
+					</div>
+
+					<button type="submit" id='my-button' class="btn">Sign in</button>
+			{{ form_end(registrationForm) }}
+
+			<p>Already registered ? <a href="{{ path('app_login') }}">Log in</a></p>
+	</div>
+	<div class='img'>
+		<img src="/img/img.png" alt="Register">
+	</div>
+</div>
+
+<script>
+
+	const inputFieldU = document.getElementById("registration_form_username")
+	const inputFieldP = document.getElementById("registration_form_plainPassword_first")
+	const inputFieldP2 = document.getElementById("registration_form_plainPassword_second")
+	const inputFieldM = document.getElementById("registration_form_email");
+	const myButton = document.getElementById("my-button");
+
+	if (inputFieldU) {
+		inputFieldU.placeholder = "Your username";
+	}
+
+	if (inputFieldP) {
+		inputFieldP.placeholder = "At least 6 character";
+	}
+
+	if (inputFieldM) {
+		inputFieldM.placeholder = "Your mail";
+	}
+
+	if (inputFieldP2) {
+		inputFieldP2.placeholder = "Repeat your password";
+	}
+
+	inputFieldP2.addEventListener("input", function() {
+		if (inputFieldP2.value === "" || inputFieldP2.value !== inputFieldP.value || inputFieldP2.value.length < 6 || inputFieldP.value.length < 6 || inputFieldU.value.length === "" || inputFieldM.value.length === "") {
+			myButton.style.backgroundColor = "rgba(69, 83, 231,0.5)";
+		} else {
+			myButton.style.backgroundColor = "#4553e7";
+		}
+	});
+
+
+</script>
+
+{% endblock %}

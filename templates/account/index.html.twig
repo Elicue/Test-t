@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccountController!{% endblock %}
+
+{% block body %}
+<div class="account">
+	<div class="container">
+
+		<nav>
+			<div class='logo'>
+				<a href="/">
+					<img src="https://i.pinimg.com/564x/56/44/39/56443973510bbb589302ac8975637dd8.jpg" alt="logo">
+				</a>
+			</div>
+
+			<div>
+				<div>
+					<img src="/img/account.svg" alt="logo">
+					<p>{{ app.user.username }}</p>
+				</div>
+				
+				<a href="{{ path('app_logout') }}">
+					<span>Logout</span>
+				</a>
+			</div>
+		</nav>
+			
+		<main>
+			<div class='title'>
+				<h1>Integrations App</h1>
+				<p>Connect your account to your favorite apps</p>
+			</div>
+			<div class='cards'>
+				<div class='card'>
+					<div class='hero'>
+						<img src="/img/zoom.png" alt="logo">
+						<button class='btn-clear'>Connect</button>
+					</div>
+					<div class='content'>
+						<h4>Zoom <p><img src='/img/certificate.svg'>by fuse</p> </h4>
+						<p>Zoom is a video conferencing and online meeting platform that allows users to connect with colleagues, friends, and family from anywhere in the world.</p>
+					</div>
+				</div>
+				<div class='card'>
+					<div class='hero'>
+						<img src="/img/figma.png" alt="logo">
+						<button class='btn-clear'>Connect</button>
+					</div>
+					<div class='content'>
+						<h4>Figma <p><img src='/img/certificate.svg'>by fuse</p> </h4>
+						<p>Figma is a collaborative design tool used by designers to create, prototype, and collaborate on user interfaces and user experience designs.</p>
+					</div>
+				</div>
+				<div class='card'>
+					<div class='hero'>
+						<img src="/img/slack.png" alt="logo">
+						<button class='btn-clear'>Connect</button>
+					</div>
+					<div class='content'>
+						<h4>Slack <p><img src='/img/certificate.svg'>by fuse</p> </h4>
+						<p>Slack is a team communication and collaboration app that streamlines workplace communication. </p>
+					</div>
+				</div>
+				<div class='card'>
+					<div class='hero'>
+						<img src="/img/trello.png" alt="logo">
+						<button class='btn-clear'>Connect</button>
+					</div>
+					<div class='content'>
+						<h4>Trello <p><img src='/img/certificate.svg'>by fuse</p> </h4>
+						<p>Trello is a visual project management tool that uses boards, lists, and cards to help teams organize and prioritize tasks.</p>
+					</div>
+				</div>
+				<div class='card'>
+					<div class='hero'>
+						<img src="/img/dropbox.png" alt="logo">
+						<button class='btn-clear'>Connect</button>
+					</div>
+					<div class='content'>
+						<h4>Dropbox <p><img src='/img/certificate.svg'>by fuse</p> </h4>
+						<p>Dropbox is a cloud-based file storage and sharing service that allows users to store and access files from any device with an internet connection. </p>
+					</div>
+				</div>
+			</div>
+		</main>
+
+	</div>
+</div>
+{% endblock %}

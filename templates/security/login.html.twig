@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+
+<div class="login">
+	<div class="container">
+		<form method="post">
+				{% if app.user %}
+						<div >
+								You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+						</div>
+				{% endif %}
+				<div class="title">
+						<h1>Log in</h1>
+						<p>Please enter your login details to log in.</p>
+				</div>
+
+				<div class="field">
+					<div>
+						<label for="inputEmail">Email</label>
+						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+					</div>
+				</div>
+
+				<div class="field">
+					<div>
+						<label for="inputPassword">Password</label>
+						<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+						<input type="hidden" name="_csrf_token"
+								value="{{ csrf_token('authenticate') }}"
+						>
+					</div>
+				</div>
+
+				<button class="btn btn-lg btn-primary" id='my-button' type="submit">
+						Log in
+				</button>
+				{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+
+		</form>
+
+		<p>Don't have an account ? <a href="{{ path('app_register') }}">Sign in</a></p>
+	</div>
+	<div class='img'>
+		<img src="/img/img.png" alt="Register">
+	</div>
+</div>
+
+<script>
+
+	const inputFieldP = document.getElementById("inputPassword")
+	const inputFieldM = document.getElementById("inputEmail");
+	const myButton = document.getElementById("my-button");
+
+	if (inputFieldP) {
+		inputFieldP.placeholder = "At least 6 character";
+	}
+
+	if (inputFieldM) {
+		inputFieldM.placeholder = "Your mail";
+	}
+
+	inputFieldP.addEventListener("input", function() {
+		if (inputFieldP.value === "" || inputFieldP.value.length < 6 || inputFieldM.value.length === "") {
+			myButton.style.backgroundColor = "rgba(69, 83, 231,0.5)";
+			myButton.disabled = true;
+		} else {
+			myButton.style.backgroundColor = "#4553e7";
+			myButton.disabled = false;
+		}
+	});
+
+
+</script>
+{% endblock %}
